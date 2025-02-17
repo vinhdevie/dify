@@ -18,7 +18,7 @@ from core.tools.tool_manager import ToolManager
 from core.tools.utils.configuration import ToolParameterConfigurationManager
 from events.app_event import app_was_created
 from extensions.ext_database import db
-from models.account import Account
+from models.account import Account, TenantAccountRole
 from models.model import App, AppMode, AppModelConfig
 from models.tools import ApiToolProvider
 from models.kapp import AppPermission
@@ -52,16 +52,17 @@ class AppService:
             # If not filtering by created_by_me, only show apps that are either:
             # 1. Created by the user OR
             # 2. Assigned to the user in app_permissions
-            filters.append(
-                db.or_(
-                    App.created_by == user_id,
-                    App.id.in_(
-                        db.select(AppPermission.app_id).where(
-                            AppPermission.user_id == user_id
-                        ).scalar_subquery()
+            if current_user.role != TenantAccountRole.OWNER:
+                filters.append(
+                    db.or_(
+                        App.created_by == user_id,
+                        App.id.in_(
+                            db.select(AppPermission.app_id).where(
+                                AppPermission.user_id == user_id
+                            ).scalar_subquery()
+                        )
                     )
                 )
-            )
 
         if args.get("name"):
             name = args["name"][:30]
