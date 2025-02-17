@@ -21,6 +21,7 @@ from extensions.ext_database import db
 from models.account import Account
 from models.model import App, AppMode, AppModelConfig
 from models.tools import ApiToolProvider
+from models.kapp import AppPermission
 from services.tag_service import TagService
 from tasks.remove_app_and_related_data_task import remove_app_and_related_data_task
 
@@ -47,6 +48,21 @@ class AppService:
 
         if args.get("is_created_by_me", False):
             filters.append(App.created_by == user_id)
+        else:
+            # If not filtering by created_by_me, only show apps that are either:
+            # 1. Created by the user OR
+            # 2. Assigned to the user in app_permissions
+            filters.append(
+                db.or_(
+                    App.created_by == user_id,
+                    App.id.in_(
+                        db.select(AppPermission.app_id).where(
+                            AppPermission.user_id == user_id
+                        ).scalar_subquery()
+                    )
+                )
+            )
+
         if args.get("name"):
             name = args["name"][:30]
             filters.append(App.name.ilike(f"%{name}%"))
