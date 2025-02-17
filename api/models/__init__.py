@@ -92,6 +92,7 @@ from .workflow import (
     WorkflowRunStatus,
     WorkflowType,
 )
+from .kapp import AppPermission
 
 __all__ = [
     "APIBasedExtension",
@@ -108,6 +109,7 @@ __all__ = [
     "AppDatasetJoin",
     "AppMode",
     "AppModelConfig",
+    "AppPermission",
     "BuiltinToolProvider",  # Added
     "CeleryTask",
     "CeleryTaskSet",
