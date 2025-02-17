@@ -483,6 +483,21 @@ class AuthConfig(BaseSettings):
         default=None,
     )
 
+    MICROSOFT_CLIENT_ID: Optional[str] = Field(
+        description="Microsoft OAuth client ID",
+        default=None,
+    )
+
+    MICROSOFT_CLIENT_SECRET: Optional[str] = Field(
+        description="Microsoft OAuth client secret",
+        default=None,
+    )
+
+    MICROSOFT_TENANT_ID: Optional[str] = Field(
+        description="Microsoft OAuth tenant ID",
+        default=None,
+    )
+
     ACCESS_TOKEN_EXPIRE_MINUTES: PositiveInt = Field(
         description="Expiration time for access tokens in minutes",
         default=60,

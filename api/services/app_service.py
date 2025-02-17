@@ -52,7 +52,7 @@ class AppService:
             # If not filtering by created_by_me, only show apps that are either:
             # 1. Created by the user OR
             # 2. Assigned to the user in app_permissions
-            if current_user.role != TenantAccountRole.OWNER:
+            if current_user.current_role != TenantAccountRole.OWNER:
                 filters.append(
                     db.or_(
                         App.created_by == user_id,
