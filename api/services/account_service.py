@@ -238,7 +238,7 @@ class AccountService:
         account.interface_theme = interface_theme
 
         # Set timezone based on language
-        account.timezone = language_timezone_mapping.get(interface_language, "UTC")
+        account.timezone = language_timezone_mapping.get(interface_language, "Asia/Ho_Chi_Minh")
 
         db.session.add(account)
         db.session.commit()
