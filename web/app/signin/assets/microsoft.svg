@@ -1,0 +1,17 @@
+<svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g clip-path="url(#clip0_microsoft)">
+        <!-- Red Square -->
+        <path d="M10.5 0H0.5V9.5H10.5V0Z" fill="#F25022"/>
+        <!-- Green Square -->
+        <path d="M20.5 0H10.5V9.5H20.5V0Z" fill="#7FBA00"/>
+        <!-- Blue Square -->
+        <path d="M10.5 10.5H0.5V20H10.5V10.5Z" fill="#00A4EF"/>
+        <!-- Yellow Square -->
+        <path d="M20.5 10.5H10.5V20H20.5V10.5Z" fill="#FFB900"/>
+    </g>
+    <defs>
+        <clipPath id="clip0_microsoft">
+            <rect width="20" height="20" fill="white" transform="translate(0.5)"/>
+        </clipPath>
+    </defs>
+</svg> 

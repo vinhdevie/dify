@@ -14,7 +14,7 @@ from constants.languages import languages
 from events.tenant_event import tenant_was_created
 from extensions.ext_database import db
 from libs.helper import extract_remote_ip
-from libs.oauth import GitHubOAuth, GoogleOAuth, OAuthUserInfo
+from libs.oauth import GitHubOAuth, GoogleOAuth, MicrosoftOAuth, OAuthUserInfo
 from models import Account
 from models.account import AccountStatus
 from services.account_service import AccountService, RegisterService, TenantService
@@ -44,7 +44,17 @@ def get_oauth_providers():
                 redirect_uri=dify_config.CONSOLE_API_URL + "/console/api/oauth/authorize/google",
             )
 
-        OAUTH_PROVIDERS = {"github": github_oauth, "google": google_oauth}
+        if not dify_config.MICROSOFT_CLIENT_ID or not dify_config.MICROSOFT_CLIENT_SECRET:
+            microsoft_oauth = None
+        else:
+            microsoft_oauth = MicrosoftOAuth(
+                client_id=dify_config.MICROSOFT_CLIENT_ID,
+                client_secret=dify_config.MICROSOFT_CLIENT_SECRET,
+                redirect_uri=dify_config.CONSOLE_API_URL + "/console/api/oauth/authorize/microsoft",
+                tenant_id=dify_config.MICROSOFT_TENANT_ID,
+            )
+
+        OAUTH_PROVIDERS = {"github": github_oauth, "google": google_oauth, "microsoft": microsoft_oauth}
         return OAUTH_PROVIDERS
 
 
