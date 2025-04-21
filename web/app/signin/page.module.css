@@ -9,8 +9,3 @@
 .microsoftIcon {
   background: center/contain url('./assets/microsoft.svg');
 }
-
-.background {
-  background-image: url('./assets/background.png');
-  background-size: cover;
-}
