@@ -29,15 +29,15 @@ const Apps = ({
 
   return (
     <div className={cn(
-      'flex flex-col h-full border-l-[0.5px] border-divider-regular',
+      'flex h-full flex-col border-l-[0.5px] border-divider-regular',
     )}>
       <div className={cn(
-        'relative flex flex-1 pb-6 flex-col overflow-auto shrink-0 grow mt-4',
+        'relative mt-4 flex flex-1 shrink-0 grow flex-col overflow-auto pb-6',
       )}>
         <nav
           className={cn(
             s.appList,
-            'grid content-start shrink-0 gap-4 px-6 sm:px-12',
+            'grid shrink-0 content-start gap-4 px-6 sm:px-12',
           )}>
           {installedApps.map((app) => {
             const url = `/kova/apps/${app.id}`
@@ -53,7 +53,6 @@ const Apps = ({
           })}
         </nav>
       </div>
-
     </div>
   )
 }
