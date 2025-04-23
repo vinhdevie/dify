@@ -48,6 +48,45 @@ def installed_app_required(view=None):
     return decorator
 
 
+def get_user_specific_apps(view=None):
+    def decorator(view):
+        @wraps(view)
+        def decorated(*args, **kwargs):
+            # try:
+            #     # Get user-specific apps from external API
+            #     response = requests.get(
+            #         current_app.config.get("EXTERNAL_APPS_API_ENDPOINT"),
+            #         params={"email": current_user.email},
+            #         headers={
+            #             "Authorization": f"Bearer {current_app.config.get('EXTERNAL_APPS_API_KEY')}"
+            #         },
+            #     )
+            #     response.raise_for_status()
+            #     user_specific_app_ids = response.json().get("app_ids", [])
+            # except requests.RequestException as e:
+            #     current_app.logger.error(f"Error fetching user-specific apps: {str(e)}")
+            #     user_specific_app_ids = []
+
+            # Call the original view function
+            result = view(*args, **kwargs)
+
+            # For testing: Only return 1 app
+            if result.get("installed_apps"):
+                result["installed_apps"] = [result["installed_apps"][0]]
+
+            return result
+
+        return decorated
+
+    if view:
+        return decorator(view)
+    return decorator
+
+
 class InstalledAppResource(Resource):
     # must be reversed if there are multiple decorators
-    method_decorators = [installed_app_required, account_initialization_required, login_required]
+    method_decorators = [
+        installed_app_required,
+        account_initialization_required,
+        login_required,
+    ]
