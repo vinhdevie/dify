@@ -16,6 +16,10 @@ export const fetchInstalledAppList = (app_id?: string | null) => {
   return get(`/installed-apps${app_id ? `?app_id=${app_id}` : ''}`)
 }
 
+export const fetchKovaInstalledAppList = (app_id?: string | null) => {
+  return get(`/kova/installed-apps${app_id ? `?app_id=${app_id}` : ''}`)
+}
+
 export const installApp = (id: string) => {
   return post('/installed-apps', {
     body: {
