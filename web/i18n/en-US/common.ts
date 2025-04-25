@@ -513,6 +513,7 @@ const translation = {
     apiAccess: 'API Access',
     logAndAnn: 'Logs & Annotations',
     logs: 'Logs',
+    user: 'User',
   },
   environment: {
     testing: 'TESTING',

@@ -493,6 +493,7 @@ const translation = {
     apiAccess: 'Truy cập API',
     logAndAnn: 'Nhật ký & Thông báo',
     logs: 'Nhật ký',
+    user: 'Người dùng',
   },
   environment: {
     testing: 'TESTING',
