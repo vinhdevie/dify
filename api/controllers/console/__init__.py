@@ -92,11 +92,7 @@ from .explore import (
     recommended_app,
     saved_message,
 )
-
-from .kapp import (
-    kova_installed_app,
-    app_members
-)
+from .kapp import app_members, kova_installed_app
 
 # Explore Audio
 api.add_resource(ChatAudioApi, "/installed-apps/<uuid:installed_app_id>/audio-to-text", endpoint="installed_app_audio")

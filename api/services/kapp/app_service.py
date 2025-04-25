@@ -1,8 +1,7 @@
 from extensions.ext_database import db
 from models.account import Account
 from models.kapp import AppAccountJoins
-from models.model import App
-from services.kapp.error import AppMemberAlreadyExistsError, AppMemberNotFoundError
+from services.kapp.error import AppMemberNotFoundError
 
 
 class KAppAppService:

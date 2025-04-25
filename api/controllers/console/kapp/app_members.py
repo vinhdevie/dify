@@ -1,10 +1,6 @@
-from typing import Required
-from urllib import parse
 
-from flask_login import current_user  # type: ignore
 from flask_restful import Resource, abort, marshal_with, reqparse  # type: ignore
 
-from configs import dify_config
 from controllers.console import api
 from controllers.console.wraps import (
     account_initialization_required,
@@ -12,7 +8,6 @@ from controllers.console.wraps import (
 )
 from extensions.ext_database import db
 from fields.kapp_fields import account_with_app_permission_list_fields
-
 from libs.login import login_required
 from models.account import Account
 from models.kapp import AppAccountPermission

@@ -1,6 +1,7 @@
+from enum import StrEnum
+
 from .engine import db
 from .types import StringUUID
-from enum import StrEnum
 
 
 class AppAccountPermission(StrEnum):
