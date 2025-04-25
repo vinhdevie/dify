@@ -88,10 +88,14 @@ from .datasets import (
 # Import explore controllers
 from .explore import (
     installed_app,
-    kova_installed_app,
     parameter,
     recommended_app,
     saved_message,
+)
+
+from .kapp import (
+    kova_installed_app,
+    app_members
 )
 
 # Explore Audio
