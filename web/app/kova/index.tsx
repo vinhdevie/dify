@@ -3,7 +3,7 @@ import type { FC } from 'react'
 import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import ExploreContext from '@/context/explore-context'
-import { fetchKovaInstalledAppList as doFetchInstalledAppList } from '@/service/explore'
+import { fetchKovaInstalledAppList as doFetchInstalledAppList } from '@/service/kapp'
 import type { InstalledApp } from '@/models/explore'
 
 export type IExploreProps = {

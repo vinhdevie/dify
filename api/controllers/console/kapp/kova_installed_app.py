@@ -18,11 +18,11 @@ from controllers.console.wraps import (
 from extensions.ext_database import db
 from fields.installed_app_fields import installed_app_list_fields
 from libs.login import login_required
-from models import App, AppUserJoins, InstalledApp, RecommendedApp
+from models import App, AppAccountJoins, InstalledApp, RecommendedApp
 from services.account_service import TenantService
 
 
-class KovaInstalledAppsListApi(Resource):
+class KAppInstalledAppsListApi(Resource):
     @login_required
     @account_initialization_required
     @marshal_with(installed_app_list_fields)
@@ -43,11 +43,11 @@ class KovaInstalledAppsListApi(Resource):
         installed_apps = installed_apps_query.all()
 
         # Get user app permissions
-        user_apps_query = db.session.query(AppUserJoins).filter(
-            AppUserJoins.user_id == user_id
+        user_apps_query = db.session.query(AppAccountJoins).filter(
+            AppAccountJoins.account_id == user_id
         )
         if app_id:
-            user_apps_query = user_apps_query.filter(AppUserJoins.app_id == app_id)
+            user_apps_query = user_apps_query.filter(AppAccountJoins.app_id == app_id)
         user_apps = user_apps_query.all()
 
         # Filter installed apps by user permissions
@@ -142,7 +142,7 @@ class KovaInstalledAppsListApi(Resource):
         return {"message": "App installed successfully"}
 
 
-class KovaInstalledAppApi(InstalledAppResource):
+class KAppInstalledAppApi(InstalledAppResource):
     """
     update and delete an installed app
     use InstalledAppResource to apply default decorators and get installed_app
@@ -173,5 +173,5 @@ class KovaInstalledAppApi(InstalledAppResource):
         return {"result": "success", "message": "App info updated successfully"}
 
 
-api.add_resource(KovaInstalledAppsListApi, "/kova/installed-apps")
-api.add_resource(KovaInstalledAppApi, "/kova/installed-apps/<uuid:installed_app_id>")
+api.add_resource(KAppInstalledAppsListApi, "/kova/installed-apps")
+api.add_resource(KAppInstalledAppApi, "/kova/installed-apps/<uuid:installed_app_id>")

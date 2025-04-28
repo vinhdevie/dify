@@ -28,7 +28,7 @@ from .dataset import (
 )
 from .engine import db
 from .enums import CreatedByRole, UserFrom, WorkflowRunTriggeredFrom
-from .kapp import AppUserJoins
+from .kapp import AppAccountJoins
 from .model import (
     ApiRequest,
     ApiToken,
@@ -103,12 +103,12 @@ __all__ = [
     "ApiToken",
     "ApiToolProvider",  # Added
     "App",
+    "AppAccountJoins",
     "AppAnnotationHitHistory",
     "AppAnnotationSetting",
     "AppDatasetJoin",
     "AppMode",
     "AppModelConfig",
-    "AppUserJoins",
     "BuiltinToolProvider",  # Added
     "CeleryTask",
     "CeleryTaskSet",
