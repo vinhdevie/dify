@@ -264,6 +264,10 @@ const translation = {
     deleteMember: 'Delete Member',
     you: '(You)',
   },
+  appUser: {
+    removeFromApp: 'Remove from app',
+    removeFromAppTip: 'Will remove app access',
+  },
   integrations: {
     connected: 'Connected',
     google: 'Google',

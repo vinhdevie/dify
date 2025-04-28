@@ -1,9 +1,9 @@
 'use client'
 import { useTranslation } from 'react-i18next'
-import { Fragment, useMemo } from 'react'
+import { Fragment } from 'react'
 import { useContext } from 'use-context-selector'
 import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@headlessui/react'
-import { CheckIcon, ChevronDownIcon } from '@heroicons/react/24/outline'
+import { ChevronDownIcon } from '@heroicons/react/24/outline'
 import cn from '@/utils/classnames'
 import type { MemberWithKappPermission } from '@/service/kapp'
 import { removeAppMember, updateAppMemberPermission } from '@/service/kapp'
@@ -19,7 +19,7 @@ type IOperationProps = {
 const UpdateOperation = ({
     app_id,
     member,
-    operatorPermission,
+    // operatorPermission,
     onOperate,
 }: IOperationProps) => {
     const { t } = useTranslation()
@@ -29,21 +29,21 @@ const UpdateOperation = ({
         editor: t('common.members.editor'),
         normal: t('common.members.normal'),
     }
-    const roleList = useMemo(() => {
-        if (operatorPermission === 'owner') {
-            return [
-                ...['admin', 'editor', 'normal'],
-            ]
-        }
-        if (operatorPermission === 'admin') {
-            return [
-                ...['editor', 'normal'],
-            ]
-        }
-        return []
-    }, [operatorPermission])
+    // const roleList = useMemo(() => {
+    //     if (operatorPermission === 'owner') {
+    //         return [
+    //             ...['admin', 'editor', 'normal'],
+    //         ]
+    //     }
+    //     if (operatorPermission === 'admin') {
+    //         return [
+    //             ...['editor', 'normal'],
+    //         ]
+    //     }
+    //     return []
+    // }, [operatorPermission])
     const { notify } = useContext(ToastContext)
-    const toHump = (name: string) => name.replace(/_(\w)/g, (all, letter) => letter.toUpperCase())
+    // const toHump = (name: string) => name.replace(/_(\w)/g, (all, letter) => letter.toUpperCase())
     const handleDeleteMember = async () => {
         try {
             await removeAppMember({
@@ -93,7 +93,7 @@ const UpdateOperation = ({
                             <MenuItems
                                 className={cn('absolute right-0 top-[52px] z-10 origin-top-right rounded-xl border-[0.5px] border-components-panel-border bg-components-panel-bg-blur shadow-lg backdrop-blur-sm')}
                             >
-                                <div className="p-1">
+                                {/* <div className="p-1">
                                     {
                                         roleList.map(role => (
                                             <MenuItem key={role}>
@@ -111,14 +111,14 @@ const UpdateOperation = ({
                                             </MenuItem>
                                         ))
                                     }
-                                </div>
+                                </div> */}
                                 <MenuItem>
                                     <div className='border-t border-divider-subtle p-1'>
                                         <div className='flex cursor-pointer rounded-lg px-3 py-2 hover:bg-state-base-hover' onClick={handleDeleteMember}>
                                             <div className='mr-1 mt-[2px] h-4 w-4 text-text-accent' />
                                             <div>
-                                                <div className='system-sm-semibold whitespace-nowrap text-text-secondary'>{t('common.members.removeFromTeam')}</div>
-                                                <div className='system-xs-regular whitespace-nowrap text-text-tertiary'>{t('common.members.removeFromTeamTip')}</div>
+                                                <div className='system-sm-semibold whitespace-nowrap text-text-secondary'>{t('common.appUser.removeFromApp')}</div>
+                                                <div className='system-xs-regular whitespace-nowrap text-text-tertiary'>{t('common.appUser.removeFromAppTip')}</div>
                                             </div>
                                         </div>
                                     </div>

@@ -244,6 +244,10 @@ const translation = {
     datasetOperator: 'Quản trị viên kiến thức',
     setBuilder: 'Đặt làm trình tạo',
   },
+  appUser: {
+    removeFromApp: 'Xóa khỏi ứng dụng',
+    removeFromAppTip: 'Sẽ xóa quyền truy cập ứng dụng',
+  },
   integrations: {
     connected: 'Đã kết nối',
     google: 'Google',

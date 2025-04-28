@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react'
 import { Combobox, ComboboxInput, ComboboxOption, ComboboxOptions } from '@headlessui/react'
-import RoleSelector from '@/app/components/header/account-setting/members-page/invite-modal/role-selector'
 import { RiCloseLine } from '@remixicon/react'
 import { useTranslation } from 'react-i18next'
 import s from '@/app/components/header/account-setting/members-page/invite-modal/index.module.css'
@@ -22,7 +21,8 @@ type AddUserModalProps = {
 const AddUserModal = ({ open, onCancel, onAdd }: AddUserModalProps) => {
     const { t } = useTranslation()
     const [selectedUsers, setSelectedUsers] = useState<User[]>([])
-    const [role, setRole] = useState<string>('normal')
+    // FIX: Temporary disabled other permissions, default to normal
+    // const [role, setRole] = useState<string>('normal')
     const [query, setQuery] = useState('')
 
     const { data } = useSWR(
@@ -43,7 +43,8 @@ const AddUserModal = ({ open, onCancel, onAdd }: AddUserModalProps) => {
         )
 
     const handleAdd = () => {
-        onAdd(selectedUsers, role)
+        // onAdd(selectedUsers, role)
+        onAdd(selectedUsers, 'normal')
         setSelectedUsers([])
     }
 
@@ -120,9 +121,9 @@ const AddUserModal = ({ open, onCancel, onAdd }: AddUserModalProps) => {
                     </Combobox>
 
                 </div>
-                <div className="mb-6">
+                {/* <div className="mb-6">
                     <RoleSelector value={role} onChange={setRole} />
-                </div>
+                </div> */}
                 <Button
                     tabIndex={0}
                     className='mt-4 w-full'
