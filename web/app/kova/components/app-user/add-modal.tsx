@@ -14,11 +14,12 @@ import type { User } from '@/models/user'
 
 type AddUserModalProps = {
     open: boolean;
+    currentUserIdList: string[];
     onCancel: () => void;
     onAdd: (users: User[], permission: string) => void;
 }
 
-const AddUserModal = ({ open, onCancel, onAdd }: AddUserModalProps) => {
+const AddUserModal = ({ open, currentUserIdList, onCancel, onAdd }: AddUserModalProps) => {
     const { t } = useTranslation()
     const [selectedUsers, setSelectedUsers] = useState<User[]>([])
     // FIX: Temporary disabled other permissions, default to normal
@@ -33,7 +34,7 @@ const AddUserModal = ({ open, onCancel, onAdd }: AddUserModalProps) => {
         fetchMembers,
     )
 
-    const accounts = data?.accounts || []
+    const accounts = data?.accounts?.filter(user => !currentUserIdList.includes(user.id)) || []
 
     const filteredUsers = query === ''
         ? accounts

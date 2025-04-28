@@ -160,6 +160,7 @@ const AppUserConfig = () => {
                 addUserModalVisible && (
                     <AddUserModal
                         open={addUserModalVisible}
+                        currentUserIdList={accounts.map(account => account.id)}
                         onCancel={() => setAddUserModalVisible(false)}
                         onAdd={(users, permission) => handleAddUser(users, permission)}
                     />
