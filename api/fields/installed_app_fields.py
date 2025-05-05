@@ -11,6 +11,7 @@ app_fields = {
     "icon_background": fields.String,
     "icon_url": AppIconUrlField,
     "use_icon_as_answer_icon": fields.Boolean,
+    "description": fields.String,
 }
 
 installed_app_fields = {
@@ -21,6 +22,7 @@ installed_app_fields = {
     "last_used_at": TimestampField,
     "editable": fields.Boolean,
     "uninstallable": fields.Boolean,
+    "kapp_permission": fields.String,
 }
 
 installed_app_list_fields = {"installed_apps": fields.List(fields.Nested(installed_app_fields))}

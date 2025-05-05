@@ -12,6 +12,8 @@ import {
   RiTerminalBoxLine,
   RiTerminalWindowFill,
   RiTerminalWindowLine,
+  RiGroup2Line as UserIcon,
+  RiGroup2Fill as UserIconSelected,
 } from '@remixicon/react'
 import { useTranslation } from 'react-i18next'
 import { useShallow } from 'zustand/react/shallow'
@@ -91,6 +93,12 @@ const AppDetailLayout: FC<IAppDetailLayoutProps> = (props) => {
         href: `/app/${appId}/overview`,
         icon: RiDashboard2Line,
         selectedIcon: RiDashboard2Fill,
+      },
+      {
+        name: t('common.appMenus.user'),
+        href: `/app/${appId}/user`,
+        icon: UserIcon,
+        selectedIcon: UserIconSelected,
       },
     ]
     return navs

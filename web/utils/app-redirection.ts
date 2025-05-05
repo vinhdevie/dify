@@ -15,3 +15,11 @@ export const getRedirection = (
       redirectionFunc(`/app/${app.id}/configuration`)
   }
 }
+
+export const getExplore = (
+  isCurrentWorkspaceEditor: boolean,
+  app: any,
+  redirectionFunc: (href: string) => void,
+) => {
+  redirectionFunc(`/kova/apps/${app.id}`)
+}
