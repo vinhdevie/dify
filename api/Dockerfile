@@ -9,6 +9,14 @@ ENV UV_VERSION=0.6.14
 RUN pip install --no-cache-dir uv==${UV_VERSION}
 
 
+ENV POETRY_NO_INTERACTION=1
+ENV POETRY_VIRTUALENVS_IN_PROJECT=true
+ENV POETRY_VIRTUALENVS_CREATE=true
+ENV POETRY_REQUESTS_TIMEOUT=60
+ENV POETRY_RETRY_COUNT=3
+ENV POETRY_RETRY_DELAY=5
+
+
 FROM base AS packages
 
 # if you located in China, you can use aliyun mirror to speed up
