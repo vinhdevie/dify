@@ -2,8 +2,8 @@ import threading
 from typing import Optional
 
 import contexts
-from core.repository import RepositoryFactory
-from core.repository.workflow_node_execution_repository import OrderConfig
+from core.workflow.repository import RepositoryFactory
+from core.workflow.repository.workflow_node_execution_repository import OrderConfig
 from extensions.ext_database import db
 from libs.infinite_scroll_pagination import InfiniteScrollPagination
 from models.enums import WorkflowRunTriggeredFrom
@@ -133,7 +133,7 @@ class WorkflowRunService:
             params={
                 "tenant_id": app_model.tenant_id,
                 "app_id": app_model.id,
-                "session_factory": db.session.get_bind,
+                "session_factory": db.session.get_bind(),
             }
         )
 
