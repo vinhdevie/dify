@@ -27,7 +27,7 @@ from .dataset import (
     Whitelist,
 )
 from .engine import db
-from .enums import CreatedByRole, UserFrom, WorkflowRunTriggeredFrom
+from .enums import CreatedUserRole, UserFrom, WorkflowRunTriggeredFrom
 from .kapp import AppAccountJoins
 from .model import (
     ApiRequest,
@@ -114,7 +114,7 @@ __all__ = [
     "CeleryTaskSet",
     "Conversation",
     "ConversationVariable",
-    "CreatedByRole",
+    "CreatorUserRole",
     "DataSourceApiKeyAuthBinding",
     "DataSourceOauthBinding",
     "Dataset",
