@@ -27,7 +27,7 @@ from .dataset import (
     Whitelist,
 )
 from .engine import db
-from .enums import CreatedUserRole, UserFrom, WorkflowRunTriggeredFrom
+from .enums import CreatorUserRole, UserFrom, WorkflowRunTriggeredFrom
 from .kapp import AppAccountJoins
 from .model import (
     ApiRequest,
