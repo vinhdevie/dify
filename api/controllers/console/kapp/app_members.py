@@ -59,6 +59,7 @@ class KAppMemberListApi(Resource):
 
         return {"result": "success"}, 200
 
+
 class KAppMemberUpdatePermissionApi(Resource):
     """Update member permission."""
 

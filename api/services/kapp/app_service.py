@@ -62,7 +62,6 @@ class KAppAppService:
             created_joins.append(join)
         return created_joins
 
-
     @staticmethod
     def remove_app_member(app_id: str, account_id: str) -> None:
         """
