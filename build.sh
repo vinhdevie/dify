@@ -15,6 +15,6 @@ aws ecr get-login-password --region ap-southeast-1 --profile kova | docker login
 # docker push 907053915986.dkr.ecr.ap-southeast-1.amazonaws.com/dify:web-latest
 # docker push 907053915986.dkr.ecr.ap-southeast-1.amazonaws.com/dify:api-latest
 
-docker buildx build --platform linux/amd64,linux/arm64 -t 907053915986.dkr.ecr.ap-southeast-1.amazonaws.com/dify:api-010 --push ./api
+docker buildx build --platform linux/amd64,linux/arm64 -t 907053915986.dkr.ecr.ap-southeast-1.amazonaws.com/dify:api-012 --push ./api
 
-docker buildx build --platform linux/amd64,linux/arm64 -t 907053915986.dkr.ecr.ap-southeast-1.amazonaws.com/dify:web-010 --push ./web
+docker buildx build --platform linux/amd64,linux/arm64 -t 907053915986.dkr.ecr.ap-southeast-1.amazonaws.com/dify:web-012 --push ./web
