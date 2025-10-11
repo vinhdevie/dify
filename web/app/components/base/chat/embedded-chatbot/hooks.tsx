@@ -183,18 +183,28 @@ export const useEmbeddedChatbot = () => {
 
         return {
           ...item.paragraph,
-          default: value || item.default,
+          default: value || item.default || item.paragraph.default,
           type: 'paragraph',
         }
       }
       if (item.number) {
-        const convertedNumber = Number(initInputs[item.number.variable]) ?? undefined
+        const convertedNumber = Number(initInputs[item.number.variable])
         return {
           ...item.number,
-          default: convertedNumber || item.default,
+          default: convertedNumber || item.default || item.number.default,
           type: 'number',
         }
       }
+
+      if (item.checkbox) {
+        const preset = initInputs[item.checkbox.variable] === true
+        return {
+          ...item.checkbox,
+          default: preset || item.default || item.checkbox.default,
+          type: 'checkbox',
+        }
+      }
+
       if (item.select) {
         const isInputInOptions = item.select.options.includes(initInputs[item.select.variable])
         return {
@@ -218,13 +228,20 @@ export const useEmbeddedChatbot = () => {
         }
       }
 
+      if (item.json_object) {
+        return {
+          ...item.json_object,
+          type: 'json_object',
+        }
+      }
+
       let value = initInputs[item['text-input'].variable]
       if (value && item['text-input'].max_length && value.length > item['text-input'].max_length)
         value = value.slice(0, item['text-input'].max_length)
 
       return {
         ...item['text-input'],
-        default: value || item.default,
+        default: value || item.default || item['text-input'].default,
         type: 'text-input',
       }
     })
@@ -312,7 +329,7 @@ export const useEmbeddedChatbot = () => {
 
     let hasEmptyInput = ''
     let fileIsUploading = false
-    const requiredVars = inputsForms.filter(({ required }) => required)
+    const requiredVars = inputsForms.filter(({ required, type }) => required && type !== InputVarType.checkbox)
     if (requiredVars.length) {
       requiredVars.forEach(({ variable, label, type }) => {
         if (hasEmptyInput)
@@ -376,7 +393,7 @@ export const useEmbeddedChatbot = () => {
   }, [mutateAppConversationData, handleConversationIdInfoChange])
 
   const handleFeedback = useCallback(async (messageId: string, feedback: Feedback) => {
-    await updateFeedback({ url: `/messages/${messageId}/feedbacks`, body: { rating: feedback.rating } }, isInstalledApp, appId)
+    await updateFeedback({ url: `/messages/${messageId}/feedbacks`, body: { rating: feedback.rating, content: feedback.content } }, isInstalledApp, appId)
     notify({ type: 'success', message: t('common.api.success') })
   }, [isInstalledApp, appId, t, notify])
 

@@ -56,6 +56,7 @@ const translation = {
     passwordInvalid: 'Mật khẩu phải chứa cả chữ và số, và có độ dài ít nhất 8 ký tự',
     passwordLengthInValid: 'Mật khẩu phải có ít nhất 8 ký tự',
     registrationNotAllowed: 'Không tìm thấy tài khoản. Vui lòng liên hệ với quản trị viên hệ thống để đăng ký.',
+    invalidEmailOrPassword: 'Email hoặc mật khẩu không hợp lệ.',
   },
   license: {
     tip: 'Trước khi bắt đầu sử dụng Phiên bản Cộng đồng của Dify, vui lòng đọc',
@@ -110,6 +111,15 @@ const translation = {
     noLoginMethodTip: 'Vui lòng liên hệ với quản trị viên hệ thống để thêm phương thức xác thực.',
     disabled: 'Xác thực webapp đã bị vô hiệu hóa. Vui lòng liên hệ với quản trị hệ thống để kích hoạt nó. Bạn có thể thử sử dụng ứng dụng trực tiếp.',
     login: 'Đăng nhập',
+  },
+  signup: {
+    signIn: 'Đăng nhập',
+    haveAccount: 'Bạn đã có tài khoản chưa?',
+    noAccount: 'Bạn chưa có tài khoản?',
+    createAccount: 'Tạo tài khoản của bạn',
+    signUp: 'Đăng ký',
+    verifyMail: 'Tiếp tục với mã xác minh',
+    welcome: '👋 Chào mừng! Vui lòng điền vào các chi tiết để bắt đầu.',
   },
 }
 

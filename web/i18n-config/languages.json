@@ -32,8 +32,8 @@
       "value": "es-ES",
       "name": "Español (España)",
       "prompt_name": "Spanish",
-      "example": "Saluton, Dify!",
-      "supported": false
+      "example": "¡Hola, Dify!",
+      "supported": true
     },
     {
       "value": "fr-FR",
@@ -85,13 +85,6 @@
       "supported": false
     },
     {
-      "value": "id-ID",
-      "name": "Bahasa Indonesia",
-      "prompt_name": "Indonesian",
-      "example": "Saluto, Dify!",
-      "supported": false
-    },
-    {
       "value": "uk-UA",
       "name": "Українська (Україна)",
       "prompt_name": "Ukrainian",
@@ -124,14 +117,14 @@
       "name": "Hindi (India)",
       "prompt_name": "Hindi",
       "example": "नमस्ते, Dify!",
-      "supported": false
+      "supported": true
     },
     {
       "value": "tr-TR",
       "name": "Türkçe",
       "prompt_name": "Türkçe",
       "example": "Selam!",
-      "supported": false
+      "supported": true
     },
     {
       "value": "fa-IR",
@@ -145,7 +138,14 @@
       "name": "Slovensko (Slovenija)",
       "prompt_name": "Slovensko",
       "example": "Zdravo, Dify!",
-      "supported": false
+      "supported": true
+    },
+    {
+      "value": "id-ID",
+      "name": "Bahasa Indonesia",
+      "prompt_name": "Indonesian",
+      "example": "Halo, Dify!",
+      "supported": true
     }
   ]
 }
